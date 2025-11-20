@@ -114,6 +114,40 @@ body {
 .se { display: none; }
 
 @media screen and (max-width: 700px) {
+
+.title-fixed {
+  position: static;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 40px 0;
+}
+
+.title-img {
+  position: static;
+  top: 30px;
+  left: 0;
+  padding-top: 20px;
+  height: 40vh;
+  width: auto;
+  object-fit: contain;
+  transform: translate(20px, -40px); 
+  z-index: 50;
+}
+
+.concept-pc {
+  padding-top: 35%;
+  margin-bottom:-2%;
+}
+
+  .catchcopy {
+    position: fixed;   /* fixedのまま */
+    right: 20px;       /* 画面右からの距離 */
+    bottom: 20px;      /* 画面下からの距離 */
+    width: 60px;       /* スマホ用にサイズ変更 */
+    height: auto;
+    z-index: 9999;
+  }
   .pc { display: none; }
-  .se { display: block; }
+    .se { display: block; }
 }
