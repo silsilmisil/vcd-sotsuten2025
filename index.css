@@ -1,7 +1,7 @@
 /* 背景固定 */
 body {
   margin: 0;
-  background-image: url("img/bg-pc.jpg");
+  background-image: url("img/bg-pc.jpg"); /* デフォルトはPC */
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -9,16 +9,23 @@ body {
   font-family: "Shippori Mincho", serif;
   font-weight: 400;
   font-style: normal;
-
 }
 
+/* 背景切替：スマホ */
+@media screen and (max-width: 700px) {
+  body {
+    background-image: url("img/bg-se.jpg");
+  }
+}
 
 /* コンテンツ全体 */
 .content {
   width: 100%;
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 120px 0; /* ヘッダーの高さ分 */
 }
+
+/* タイトル固定 */
 .title-fixed {
   position: fixed;
   top: 0;
@@ -27,57 +34,30 @@ body {
   padding: 40px 0;
 }
 
-.content {
-  padding-top: 120px; /* タイトルの高さと同じくらい */
-}
-/* 各画像を画面幅に合わせて拡大 / 縮小 */
-.section-img {
-  display: block;
-  width: 100%;        /* 横幅いっぱい */
-  height: auto;       /* 比率維持で自動 */
-  margin: 90px 0;     /* 画像同士の距離 */
-}
-
-/* タイトルが粘る高さ（＝sticky が効き続ける範囲） */
-.title-wrap {
-  height: 200vh;   /* ←ここを調整。大きいほど粘る */
-  position: relative;
-}
-
-/* sticky で上に張り付く */
 .title-img {
-  position: sticky;
-  padding-top:20px;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  padding-top: 20px;
   display: block;
-  height: 95vh;
+  height: 91vh;
   width: auto;
   object-fit: contain;
-  transform: translate(30px, -40px); /* 必要なら微調整 */
-  z-index: 10;
+  transform: translate(30px, -40px); 
+  z-index: 50;
 }
 
-.bg {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* 各画像 */
+.section-img {
+  display: block;
   width: 100%;
-  height: 100%;
-  background-image: url("img/bg-pc.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1; /* コンテンツの後ろに配置 */
+  height: auto;
+  margin: 90px 0;
 }
 
-.section {
-  position: relative;
-  width: 100%;
-}
-
-.concept-pc{
-padding-top: 45%;
-margin-bottom:-2%;
-
+.concept-pc {
+  padding-top: 45%;
+  margin-bottom:-2%;
 }
 
 .overlay {
@@ -87,48 +67,53 @@ margin-bottom:-2%;
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-between; /* 左右に分ける */
+  justify-content: space-between;
   align-items: flex-start;
   padding: 30px;
   box-sizing: border-box;
-
   line-height: 1.15;
 }
 
 .overlay-title {
   color: white;
   font-size: 1.6rem;
-  text-align: left;  /* 右側に揃える */
+  text-align: left;
   flex: 1;
   margin-left: 350px;
-    margin-top: 0.8%;
+  margin-top: 0.8%;
 }
 
 .overlay-left {
-        margin-top: 0%;
-      font-size: 0.85rem;
-      color: white;
+  margin-top: 0%;
+  font-size: 0.85rem;
+  color: white;
   flex: 1;
-  text-align: left;  /* 左揃え */
-    margin-left: -690px;
+  text-align: left;
+  margin-left: -690px;
 }
 
 .overlay-left img {
   max-width: 100%;
   height: auto;
-    margin-top: 0%;
-      margin-left: 0%;
-        width: 59%;
-  height:auto;
+  width: 59%;
 }
 
 /* 左下に固定表示されるキャッチコピー */
 .catchcopy {
   position: fixed;
-  right: 90px;     /* 画面左からの距離（調整OK） */
-  bottom: 70px;   /* 画面下からの距離（調整OK） */
+  right: 90px;
+  bottom: 70px;
   width: 30px; 
-height: auto;
-  z-index: 9999;  /* 最前面に固定 */
-  pointer-events: none; /* クリックを邪魔しない（必要なら消してOK） */
+  height: auto;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* PC / スマホ切替（画像） */
+.pc { display: block; }
+.se { display: none; }
+
+@media screen and (max-width: 700px) {
+  .pc { display: none; }
+  .se { display: block; }
 }
