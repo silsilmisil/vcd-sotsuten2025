@@ -12,7 +12,7 @@ body {
 }
 
 /* 背景切替：スマホ */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
   body {
     background-image: url("img/bg-se.jpg");
   }
@@ -36,7 +36,7 @@ body {
 
 .title-img {
   position: fixed;
-  top: 30px;
+  top: 42px;
   left: 0;
   padding-top: 20px;
   display: block;
@@ -101,19 +101,97 @@ body {
 /* 左下に固定表示されるキャッチコピー */
 .catchcopy {
   position: fixed;
-  right: 90px;
+  right: 7.5%;
   bottom: 70px;
   width: 30px; 
   height: auto;
   z-index: 9999;
   pointer-events: none;
 }
+/* leaflet の比率を固定（例：縦1.414倍なら 141.4%） */
+.leaflet-wrapper {
+  position: relative;
+  width: 100%;
+ /* ← ここが画像の高さに相当する。縦横比に合わせる */
+}
+
+/* 画像は wrapper 内で完全フィット */
+.leaflet-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* PDF ボタン（縦横すべて leaflet に完全追従） */
+.pdf-btn {
+  position: absolute;
+
+  /* 縦位置（画像の比率に基づくのでズレない） */
+  top: 93.4%;        /* ← 画像高さの 72% の位置 */
+  
+  /* 横位置（同様に画像幅基準） */
+  right: 57.52%;
+
+  width: 6.7%;      /* 画像幅の 12%の大きさ */
+  transform: translate(50%, -50%);
+  z-index: 10;
+}
+
+.pdf-btn img {
+  width: 100%;
+  height: auto;
+}
+
+.credit-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.vcdLink-btn {
+  position: absolute;
+
+  /* 縦位置（画像の比率に基づくのでズレない） */
+  top: 76.5%;        /* ← 画像高さの 72% の位置 */
+  
+  /* 横位置（同様に画像幅基準） */
+  right: 36.2%;
+
+  height: 2.75%;      /* 画像幅の 12%の大きさ */
+  transform: translate(50%, -50%);
+  z-index: 10;
+}
+
+.vcdLink-btn img {
+  width: auto;
+  height: 100%;
+}
+.mauLink-btn {
+   position: absolute;
+
+  /* 縦位置（画像の比率に基づくのでズレない） */
+  top: 81%;        /* ← 画像高さの 72% の位置 */
+  
+  /* 横位置（同様に画像幅基準） */
+  right: 37.61%;
+
+  height: 2.75%;      /* 画像幅の 12%の大きさ */
+  transform: translate(50%, -50%);
+  z-index: 10;
+}
+
+.mauLink-btn img {
+  width: auto;
+  height: 100%;
+}
 
 /* PC / スマホ切替（画像） */
 .pc { display: block; }
 .se { display: none; }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
 
 .title-fixed {
   position: static;
@@ -142,12 +220,54 @@ body {
 
   .catchcopy {
     position: fixed;   /* fixedのまま */
-    right: 20px;       /* 画面右からの距離 */
-    bottom: 20px;      /* 画面下からの距離 */
-    width: 60px;       /* スマホ用にサイズ変更 */
+    right: 16px;       /* 画面右からの距離 */
+    bottom: 35px;      /* 画面下からの距離 */
+    width: 23px;       /* スマホ用にサイズ変更 */
     height: auto;
     z-index: 9999;
   }
+
+/* PDF ボタン（縦横すべて leaflet に完全追従） */
+.pdf-btn {
+  position: absolute;
+
+  /* 縦位置（画像の比率に基づくのでズレない） */
+  top: 91.9%;        /* ← 画像高さの 72% の位置 */
+  
+  /* 横位置（同様に画像幅基準） */
+  right: 87.8%;
+
+  width: 17%;      /* 画像幅の 12%の大きさ */
+  transform: translate(50%, -50%);
+  z-index: 10;
+}
+
+.vcdLink-btn {
+  position: absolute;
+
+  /* 縦位置（画像の比率に基づくのでズレない） */
+  top: 76.5%;        /* ← 画像高さの 72% の位置 */
+  
+  /* 横位置（同様に画像幅基準） */
+  right: 30.6%;
+
+  height: 4%;    /* 画像幅の 12%の大きさ */
+  transform: translate(50%, -50%);
+  z-index: 10;
+}
+
+.mauLink-btn {
+   position: absolute;
+
+  /* 縦位置（画像の比率に基づくのでズレない） */
+  top: 81%;        /* ← 画像高さの 72% の位置 */
+  
+  right: 33.8%;
+  height: 4%;      /* 画像幅の 12%の大きさ */
+  transform: translate(50%, -50%);
+  z-index: 10;
+}
+
   .pc { display: none; }
     .se { display: block; }
 }
