@@ -1,38 +1,32 @@
-/* 背景固定 */
+/* ===== 全体リセット ===== */
 body {
   margin: 0;
-  background-image: url("img/bg-pc.jpg"); /* デフォルトはPC */
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
   font-family: "Shippori Mincho", serif;
   font-weight: 400;
   font-style: normal;
 }
 
-/* 背景切替：スマホ */
-
-@media screen and (max-width: 1000px) {
-  body {
-    background-image: url("img/bg-se.jpg");
-    background-size: cover;          /* 横幅基準で画面全体にフィット */
-    background-position: center;     /* 中央に配置 */
-    background-repeat: no-repeat;
-    background-attachment: fixed;    /* スクロールしないよう固定 */
-    height: 100vh;                   /* 画面縦サイズに合わせる */
-    overflow: hidden;                /* 万が一スクロールバーが出るのを防ぐ */
-  }
+/* ===== 背景固定用 div ===== */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 背景は後ろに */
+  background-image: url("img/bg-pc.jpg"); /* PC用 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* コンテンツ全体 */
+/* ===== コンテンツ全体 ===== */
 .content {
   width: 100%;
   margin: 0 auto;
-  
 }
 
-/* タイトル固定 */
+/* ===== タイトル固定 ===== */
 .title-fixed {
   position: fixed;
   top: 0;
@@ -50,11 +44,11 @@ body {
   height: 91vh;
   width: auto;
   object-fit: contain;
-  transform: translate(30px, -40px); 
+  transform: translate(30px, -40px);
   z-index: 50;
 }
 
-/* 各画像 */
+/* ===== 各画像 ===== */
 .section-img {
   display: block;
   width: 100%;
@@ -62,59 +56,43 @@ body {
   margin: 90px 0;
 }
 
-.mau-img{
-    position: relative;
-    width: 8%;
+.mau-img {
+  position: relative;
+  width: 8%;
   height: auto;
-left:89%;
-    padding-bottom:5%;
-    z-index: 2000;
+  left: 89%;
+  padding-bottom: 5%;
+  z-index: 2000;
 }
+
 .concept-pc {
   padding-top: 45%;
-  margin-bottom:-2%;
+  margin-bottom: -2%;
 }
 
-
-
-/* 左下に固定表示されるキャッチコピー */
+/* ===== 左下キャッチコピー ===== */
 .catchcopy {
   position: fixed;
   right: 7.5%;
   bottom: 70px;
-  width: 30px; 
+  width: 30px;
   height: auto;
   z-index: 1000;
   pointer-events: none;
 }
-/* leaflet の比率を固定（例：縦1.414倍なら 141.4%） */
+
+/* ===== leaflet wrapper ===== */
 .leaflet-wrapper {
   position: relative;
   width: 100%;
- /* ← ここが画像の高さに相当する。縦横比に合わせる */
 }
 
-/* 画像は wrapper 内で完全フィット */
-.leaflet-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* PDF ボタン（縦横すべて leaflet に完全追従） */
+/* PDF ボタン（leaflet上） */
 .pdf-btn {
   position: absolute;
-
-  /* 縦位置（画像の比率に基づくのでズレない） */
-  top: 93.4%;        /* ← 画像高さの 72% の位置 */
-  
-  /* 横位置（同様に画像幅基準） */
+  top: 93.4%;
   right: 57.52%;
-
-  width: 6.7%;      /* 画像幅の 12%の大きさ */
+  width: 6.7%;
   transform: translate(50%, -50%);
   z-index: 10;
 }
@@ -131,14 +109,9 @@ left:89%;
 
 .vcdLink-btn {
   position: absolute;
-
-  /* 縦位置（画像の比率に基づくのでズレない） */
-  top: 76.5%;        /* ← 画像高さの 72% の位置 */
-  
-  /* 横位置（同様に画像幅基準） */
+  top: 76.5%;
   right: 36.2%;
-
-  height: 2.75%;      /* 画像幅の 12%の大きさ */
+  height: 2.75%;
   transform: translate(50%, -50%);
   z-index: 10;
 }
@@ -147,16 +120,12 @@ left:89%;
   width: auto;
   height: 100%;
 }
+
 .mauLink-btn {
-   position: absolute;
-
-  /* 縦位置（画像の比率に基づくのでズレない） */
-  top: 81%;        /* ← 画像高さの 72% の位置 */
-  
-  /* 横位置（同様に画像幅基準） */
+  position: absolute;
+  top: 81%;
   right: 37.61%;
-
-  height: 2.75%;      /* 画像幅の 12%の大きさ */
+  height: 2.75%;
   transform: translate(50%, -50%);
   z-index: 10;
 }
@@ -166,97 +135,77 @@ left:89%;
   height: 100%;
 }
 
-/* PC / スマホ切替（画像） */
+/* PC / スマホ切替 */
 .pc { display: block; }
 .se { display: none; }
 
+/* ===== メディアクエリ：スマホ ===== */
 @media screen and (max-width: 1000px) {
 
-.title-fixed {
-  position: static;
-  top: 0;
-  width: 100%;
-  z-index: 50;
-  padding: 40px 0;
-}
-
-.title-img {
-  position: static;
-  top: 30px;
-  left: 0;
-  padding-top: 20px;
-  height: 40vh;
-  width: auto;
-  object-fit: contain;
-  transform: translate(20px, -40px); 
-  z-index: 50;
-}
-
-.concept-pc {
-  padding-top: 35%;
-  margin-bottom:-2%;
-}
-
-  .catchcopy {
-    position: fixed;   /* fixedのまま */
-    right: 16px;       /* 画面右からの距離 */
-    bottom: 35px;      /* 画面下からの距離 */
-    width: 23px;       /* スマホ用にサイズ変更 */
-    height: auto;
-    z-index: 9999;
+  /* 背景画像切替 */
+  .bg {
+    background-image: url("img/bg-se.jpg");
+    background-size: cover;       /* 横幅基準で画面いっぱいに */
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
-/* PDF ボタン（縦横すべて leaflet に完全追従） */
-.pdf-btn {
-  position: absolute;
+  /* タイトル */
+  .title-fixed {
+    position: static;
+    padding: 40px 0;
+  }
 
-  /* 縦位置（画像の比率に基づくのでズレない） */
-  top: 91.9%;        /* ← 画像高さの 72% の位置 */
-  
-  /* 横位置（同様に画像幅基準） */
-  right: 87.8%;
+  .title-img {
+    position: static;
+    top: 30px;
+    left: 0;
+    padding-top: 20px;
+    height: 40vh;
+    width: auto;
+    object-fit: contain;
+    transform: translate(20px, -40px);
+    z-index: 50;
+  }
 
-  width: 17%;      /* 画像幅の 12%の大きさ */
-  transform: translate(50%, -50%);
-  z-index: 10;
-}
+  .concept-pc {
+    padding-top: 35%;
+    margin-bottom: -2%;
+  }
 
-.vcdLink-btn {
-  position: absolute;
+  /* キャッチコピー */
+  .catchcopy {
+    right: 16px;
+    bottom: 35px;
+    width: 23px;
+  }
 
-  /* 縦位置（画像の比率に基づくのでズレない） */
-  top: 76.5%;        /* ← 画像高さの 72% の位置 */
-  
-  /* 横位置（同様に画像幅基準） */
-  right: 30.6%;
+  /* PDFボタン */
+  .pdf-btn {
+    top: 91.9%;
+    right: 87.8%;
+    width: 17%;
+  }
 
-  height: 4%;    /* 画像幅の 12%の大きさ */
-  transform: translate(50%, -50%);
-  z-index: 10;
-}
+  .vcdLink-btn {
+    top: 76.5%;
+    right: 30.6%;
+    height: 4%;
+  }
 
-.mauLink-btn {
-   position: absolute;
+  .mauLink-btn {
+    top: 81%;
+    right: 33.8%;
+    height: 4%;
+  }
 
-  /* 縦位置（画像の比率に基づくのでズレない） */
-  top: 81%;        /* ← 画像高さの 72% の位置 */
-  
-  right: 33.8%;
-  height: 4%;      /* 画像幅の 12%の大きさ */
-  transform: translate(50%, -50%);
-  z-index: 10;
-}
-
-.mau-img{
-    position: relative;
+  .mau-img {
     width: 10%;
-  height: auto;
-left:85%;
-    padding-top:10%;
-    padding-bottom:5%;
-    z-index: 2000;
-}
+    left: 85%;
+    padding-top: 10%;
+    padding-bottom: 5%;
+  }
 
   .pc { display: none; }
-    .se { display: block; }
+  .se { display: block; }
 }
