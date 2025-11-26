@@ -12,13 +12,16 @@ body {
 }
 
 /* 背景切替：スマホ */
-/* 背景切替：スマホ */
+
 @media screen and (max-width: 1000px) {
   body {
     background-image: url("img/bg-se.jpg");
-    background-size: 100% auto; /* 横幅に合わせて高さは自動 */
-    background-position: top center; /* 上寄せでも中央寄せでもOK */
-    background-attachment: scroll;   /* 固定は解除してスクロールに合わせる */
+    background-size: cover;          /* 横幅基準で画面全体にフィット */
+    background-position: center;     /* 中央に配置 */
+    background-repeat: no-repeat;
+    background-attachment: fixed;    /* スクロールしないよう固定 */
+    height: 100vh;                   /* 画面縦サイズに合わせる */
+    overflow: hidden;                /* 万が一スクロールバーが出るのを防ぐ */
   }
 }
 
