@@ -394,6 +394,12 @@ html {
     background-repeat: no-repeat;
   }
 
+   .menu-icon {
+    width: 10vw;
+    min-width: unset;
+    max-width: unset;
+  }
+
 .menu-btn {
   top: 2%;
   right: 2%;
@@ -401,11 +407,13 @@ html {
   height: auto;
 }
 .menu-icon img {
-  width: 100%; /* 好きに調整 */
+  width: 50%; /* 好きに調整 */
   height: auto;
-  margin-left : -480%;
-  margin-top : -25%;
+  margin-left : -220%;
+  margin-top : -10%;
 }
+
+
 
   .title-img {
     animation-delay: 2.5s; 
