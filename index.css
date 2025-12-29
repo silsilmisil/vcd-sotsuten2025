@@ -246,6 +246,41 @@ html {
   border: none;
   padding: 0;
   cursor: pointer;
+  width: 3vw;   /* PC */
+  max-width: 48px;
+  min-width: 28px;
+}
+
+
+.menu-icon img {
+  transition: transform 0.4s ease;
+  transform: rotate(0deg);
+
+  width: 80%; /* 好きに調整 */
+  height: auto;
+  z-index: 1000;
+  margin-top:-10%;
+  margin-left:-280%;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 3%;
+  right: 2%;
+  height: auto;        /* サイズは調整してOK */
+  width: 4%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 4000;
+}
+
+/* 透明度のトランジション（今のままでOK） */
+.menu-btn img {
+  transition: opacity 0.1s ease;
+  width: 100%;
+  height: auto;
 }
 
 /* 通常 hover */
@@ -257,25 +292,6 @@ html {
 .menu-icon:hover + .menu-btn img {
   opacity: 0.6;
 }
-.menu-icon img {
-  width: 20%; /* 好きに調整 */
-  height: auto;
-  margin-right : 8%;
-  margin-top : -1%;
-  z-index: 1000;
-}
-
-/* 透明度のトランジション（今のままでOK） */
-.menu-btn img {
-  transition: opacity 0.1s ease;
-}
-
-/* アイコン用：回転アニメーション */
-/* 通常状態 */
-.menu-icon img {
-  transition: transform 0.4s ease;
-  transform: rotate(0deg);
-}
 
 /* メニューが開いている状態 */
 .menu-icon.is-open img {
@@ -284,24 +300,6 @@ html {
 /* 回転状態（アイコンだけ） */
 .menu-icon.is-rotating img {
   transform: rotate(360deg);
-}
-
-.menu-btn {
-  position: fixed;
-  top: 3%;
-  right: 2%;
-  width: 5%;        /* サイズは調整してOK */
-  height: auto;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  z-index: 4000;
-}
-
-.menu-btn img {
-  width: 100%;
-  height: auto;
 }
 
 .menu-btn,
@@ -403,10 +401,10 @@ html {
   height: auto;
 }
 .menu-icon img {
-  width: 15%; /* 好きに調整 */
+  width: 100%; /* 好きに調整 */
   height: auto;
-  margin-right : -2%;
-  margin-top : -4%;
+  margin-left : -480%;
+  margin-top : -25%;
 }
 
   .title-img {
