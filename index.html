@@ -12,10 +12,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet">
 </head>
+
+
 <body>
 
   <!-- 背景固定用の div -->
-  <div class="bg"></div>
+  <div class="bg fade-in"></div>
 
   <header class="title-fixed">
     <!-- PC用 / スマホ用 -->
@@ -23,21 +25,82 @@
     <img src="img/title-se.png" class="title-img se" alt="">
   </header>
 
-  <main class="content">
-    <!-- 各セクション画像 -->
-    <img src="img/concept-pc.png" class="section-img concept-pc pc" alt="">
-    <img src="img/concept-se.png" class="section-img concept-pc se" alt="">
+<!-- ハンバーガーメニューボタン -->
+<!-- メニューボタンラッパー -->
+<div class="menu-trigger">
+  <!-- 左のアイコン -->
+  <button class="menu-icon" id="menuIcon">
+    <img src="img/menu-icon.png" alt="icon">
+  </button>
 
+  <!-- 既存のメニューボタン -->
+  <button class="menu-btn" id="menuBtn">
+    <img src="img/MenuButton.png" alt="menu">
+  </button>
+</div>
+
+<!-- メニュー全体 -->
+<div class="menu-overlay" id="menuOverlay">
+  <!-- メニュー背景 -->
+  <img src="img/menu-img-pc.png" class="menu-bg pc" alt="menu background">
+    <img src="img/menu-img-se.png" class="menu-bg se" alt="menu background">
+
+  <!-- メニュー内ボタン（仮） -->
+<div class="menu-items">
+  <a href="#top" class="menu-link">
+    <img src="img/menu-home.png" alt="top">
+  </a>
+
+  <a href="#text" class="menu-link">
+    <img src="img/menu-text.png" alt="text">
+  </a>
+
+  <a href="#map" class="menu-link">
+    <img src="img/menu-map.png" alt="map">
+  </a>
+
+  <a href="#leaflet" class="menu-link">
+    <img src="img/menu-leaflet.png" alt="book">
+  </a>
+
+  <a href="#book" class="menu-link">
+    <img src="img/menu-book.png" alt="book">
+  </a>
+
+</div>
+
+  <!-- 閉じる用ボタン（同じ画像でOK） -->
+  <button class="menu-btn menu-btn--open" id="menuCloseBtn">
+    <img src="img/MenuClose.png" alt="close">
+  </button>
+</div>
+
+
+  <main class="content">
+    <section class="snap-section dummy"id="top"></section>
+
+    <!-- 各セクション画像 -->
+
+    <img src="img/concept-pc.png" class="section-img concept-pc pc" id="concept" alt="">
+    <img src="img/concept-se.png" class="section-img concept-pc se" id="concept" alt="">
+
+<div class="text-wrapper" id="text">
     <img src="img/t-text-pc.png" class="section-img pc" alt="">
     <img src="img/t-text-se.png" class="section-img se" alt="">
+    </div>
 
-    <img src="img/map-pc.png" class="section-img pc" alt="">
-    <img src="img/map-se.png" class="section-img se" alt="">
+    <div class="map-wrapper"  id="map" >
+    <img src="img/map-pc.png" class="section-img pc"alt="">
+    <img src="img/map-se.png" class="section-img se"alt="">
+          <a href="https://maps.app.goo.gl/f9FTjKomqPXpvs6y7" target="_blank" class="mapLink-btn">
+        <img src="img/mapLink.png" alt="">
+    </a>
+    </div>
 
 <!-- leaflet（PC版 / SP版） -->
-<div class="leaflet-wrapper">
-    <img src="img/leaflet-pc.png" class="section-img pc" alt="">
-    <img src="img/leaflet-se.png" class="section-img se" alt="">
+<div class="leaflet-wrapper" id="leaflet" >
+    <img src="img/leaflet-pc.png" class="section-img pc"alt="">
+    <img src="img/leaflet-se.png" class="section-img se"alt="">
 
     <!-- PDFリンクのボタン画像 -->
     <a href="leaflet.pdf" target="_blank" class="pdf-btn">
@@ -45,14 +108,21 @@
     </a>
 </div>
 
-    <img src="img/book-pc.png" class="section-img pc" alt="">
+<div class="leaflet-wrapper"  id="book" >
+    <img src="img/book-pc.png" class="section-img pc"alt="">
     <img src="img/book-se.png" class="section-img se" alt="">
+    </div>
 
 <div class="credit-wrapper">
     <img src="img/credit-pc.png" class="section-img pc" alt="">
     <img src="img/credit-se.png" class="section-img se" alt="">
+</div>
 
-    <!-- PDFリンクのボタン画像 -->
+<div class="link-wrapper">
+    <img src="img/link-pc.png" class="section-img pc linkImage" alt="">
+    <img src="img/link-se.png" class="section-img se linkImage" alt="">
+    
+    <!-- リンクのボタン画像 -->
     <a href="https://vcd.musabi.ac.jp/web/" target="_blank" class="vcdLink-btn">
         <img src="img/vcdwebLink.png" alt="">
     </a>
@@ -61,10 +131,78 @@
     </a>
 </div>
 
-<img src="img/MAU.png" class="mau-img" alt="">
     <img src="img/catchcopy-pc.png" class="catchcopy pc" alt="">
     <img src="img/catchcopy-se.png" class="catchcopy se" alt="">
   </main>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("menuBtn");
+  const menuIcon = document.getElementById("menuIcon");
+  const menuCloseBtn = document.getElementById("menuCloseBtn");
+  const menuOverlay = document.getElementById("menuOverlay");
+
+  function openMenu() {
+    menuIcon.classList.add("is-open");
+    menuBtn.classList.add("is-hidden");
+    document.querySelector(".menu-trigger").classList.add("is-disabled");
+    menuOverlay.classList.add("is-open");
+  }
+
+  function closeMenu() {
+    menuIcon.classList.remove("is-open");
+    menuOverlay.classList.remove("is-open");
+    menuOverlay.classList.add("is-closing");
+
+    setTimeout(() => {
+      menuOverlay.classList.remove("is-closing");
+      menuBtn.classList.remove("is-hidden");
+      document.querySelector(".menu-trigger").classList.remove("is-disabled");
+    }, 200);
+  }
+
+  menuBtn.addEventListener("click", openMenu);
+  menuIcon.addEventListener("click", openMenu);
+  menuCloseBtn.addEventListener("click", closeMenu);
+
+  // ★ ここが重要
+  document.querySelectorAll('.menu-link').forEach(link => {
+   link.addEventListener('click', (e) => {
+  e.preventDefault();
+  const target = document.querySelector(link.getAttribute('href'));
+  closeMenu();
+  setTimeout(() => {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }, 200);
+});
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const titleWrap = document.querySelector(".title-fixed");
+  const dummy = document.querySelector(".snap-section.dummy");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // ダミー表示中 → タイトル表示
+          titleWrap.classList.remove("is-hidden");
+        } else {
+          // ダミー外 → タイトル非表示
+          titleWrap.classList.add("is-hidden");
+        }
+      });
+    },
+    {
+      root: document.querySelector(".content"),
+      threshold: 0.1
+    }
+  );
+
+  observer.observe(dummy);
+});
+</script>
 </body>
 </html>

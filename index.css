@@ -4,84 +4,160 @@ body {
   font-family: "Shippori Mincho", serif;
   font-weight: 400;
   font-style: normal;
+    background-color: white;      
 }
+html {
+  scroll-behavior: smooth;
+}
+
+/* 初期状態 */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+/* フェードインアニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn2 {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* ===== 背景固定用 div ===== */
 .bg {
+  animation-delay:0.2s; 
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0%;
+  left: 0%;
   width: 100%;
   height: 100%;
-  z-index: -1; /* 背景は後ろに */
-  background-image: url("img/bg-pc.jpg"); /* PC用 */
-  background-size: cover;
-  background-position: center;
+  z-index: -1;
+        /* ← 余白は白 */
+  background-image: url("img/bg-pc.jpg");
   background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;            /* ← 横幅基準 */
 }
 
 /* ===== コンテンツ全体 ===== */
 .content {
   width: 100%;
-  margin: 0 auto;
+
+  scroll-snap-type: y mandatory;
+  scroll-padding-bottom: 2%; /* ← ここでズラす */
+  overflow-y: auto;
+  height: 100vh; /* スクロール領域を画面高さに合わせる */
+}
+
+.snap-section.dummy {
+  scroll-snap-align: none; /* ← 重要 */
+  height: 100vh;
+  scroll-snap-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ===== タイトル固定 ===== */
 .title-fixed {
+    opacity: 1;
+  transition: opacity 0.3s ease;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 50;
-  padding: 40px 0;
+  z-index:-1;
+}
+
+.title-fixed.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .title-img {
+  opacity: 0;
+  animation: fadeIn 4s ease-out forwards;
+  animation-delay: 5s;
+
   position: fixed;
-  top: 42px;
-  left: 0;
-  padding-top: 20px;
-  display: block;
-  height: 91vh;
-  width: auto;
-  object-fit: contain;
-  transform: translate(30px, -40px);
+  top: 2%;
+  left: 2%;
+  width: 16%;
   z-index: 50;
+
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
+
 /* ===== 各画像 ===== */
+
 .section-img {
+    scroll-snap-align: center;
   display: block;
   width: 100%;
   height: auto;
-  margin: 90px 0;
+  margin: 30% 0;
 }
 
-.mau-img {
-  position: relative;
-  width: 8%;
-  height: auto;
-  left: 89%;
-  padding-bottom: 5%;
-  z-index: 2000;
-}
-
+/*
 .concept-pc {
   padding-top: 45%;
   margin-bottom: -2%;
-}
+}*/
 
 /* ===== 左下キャッチコピー ===== */
 .catchcopy {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
+  animation-delay: 2.5s; 
+
   position: fixed;
-  right: 7.5%;
-  bottom: 70px;
-  width: 30px;
+  right: 6%;
+  bottom: 6.5%;
+  width: 2.2%;
   height: auto;
-  z-index: 1000;
+  z-index: -1;
   pointer-events: none;
 }
 
 /* ===== leaflet wrapper ===== */
+.map-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* MAP ボタン */
+.mapLink-btn {
+  position: absolute;
+  top: 56%;
+  left: 15.8%;
+  width: 6.7%;
+  transform: translate(50%, -50%);
+  z-index: 10;
+}
+
+.mapLink-btn img {
+  opacity: 1;
+  transition: opacity 0.05s ease;
+  width: 100%;
+  height: auto;
+}
+
 .leaflet-wrapper {
   position: relative;
   width: 100%;
@@ -90,14 +166,16 @@ body {
 /* PDF ボタン（leaflet上） */
 .pdf-btn {
   position: absolute;
-  top: 93.4%;
-  right: 57.52%;
-  width: 6.7%;
+  top: 89.9%;
+  left: 13.2%;
+  width: 11.6%;
   transform: translate(50%, -50%);
   z-index: 10;
 }
 
 .pdf-btn img {
+  opacity: 1;
+  transition: opacity 0.05s ease;
   width: 100%;
   height: auto;
 }
@@ -107,104 +185,280 @@ body {
   width: 100%;
 }
 
+.link-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .vcdLink-btn {
   position: absolute;
-  top: 76.5%;
-  right: 36.2%;
-  height: 2.75%;
+  top: 59.8%;
+  left:11.9%;
+  height: 8.2%;
   transform: translate(50%, -50%);
   z-index: 10;
 }
 
 .vcdLink-btn img {
+  opacity: 1;
+  transition: opacity 0.05s ease;
   width: auto;
   height: 100%;
 }
 
 .mauLink-btn {
   position: absolute;
-  top: 81%;
-  right: 37.61%;
-  height: 2.75%;
+  top: 74%;
+  left:13.9%;
+  height: 8.2%;
   transform: translate(50%, -50%);
   z-index: 10;
 }
 
 .mauLink-btn img {
+  opacity: 1;
+  transition: opacity 0.05s ease;
   width: auto;
   height: 100%;
+}
+
+.vcdLink-btn img:hover, .mauLink-btn img:hover,.pdf-btn img:hover, .mapLink-btn img:hover{
+  opacity: 0.6;
+}
+
+/* ===== ハンバーガーメニューボタン ===== */
+.menu-trigger {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 5s; 
+
+  position: fixed;
+  top: 3%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  z-index: 5000; /* ← overlay より必ず上 */
+}
+.menu-icon {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* 通常 hover */
+.menu-btn:hover img {
+  opacity: 0.6;
+}
+
+/* アイコンに hover したときもメニューボタンだけ薄くする */
+.menu-icon:hover + .menu-btn img {
+  opacity: 0.6;
+}
+.menu-icon img {
+  width: 20%; /* 好きに調整 */
+  height: auto;
+  margin-right : 8%;
+  margin-top : -1%;
+  z-index: 1000;
+}
+
+/* 透明度のトランジション（今のままでOK） */
+.menu-btn img {
+  transition: opacity 0.1s ease;
+}
+
+/* アイコン用：回転アニメーション */
+/* 通常状態 */
+.menu-icon img {
+  transition: transform 0.4s ease;
+  transform: rotate(0deg);
+}
+
+/* メニューが開いている状態 */
+.menu-icon.is-open img {
+  transform: rotate(360deg);
+}
+/* 回転状態（アイコンだけ） */
+.menu-icon.is-rotating img {
+  transform: rotate(360deg);
+}
+
+.menu-btn {
+  position: fixed;
+  top: 3%;
+  right: 2%;
+  width: 5%;        /* サイズは調整してOK */
+  height: auto;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 4000;
+}
+
+.menu-btn img {
+  width: 100%;
+  height: auto;
+}
+
+.menu-btn,
+.menu-items a img {
+  transition: opacity 0.1s ease;
+}
+
+.menu-btn:hover,
+.menu-items a img:hover {
+  opacity: 0.6;
+}
+/* menuボタンを一時的に無効化 */
+.menu-btn.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===== メニューオーバーレイ ===== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.2s ease;
+}
+
+.menu-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* フェード中だけ表示を維持するためのクラス */
+.menu-overlay.is-closing {
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+}
+
+/* 背景画像 */
+.menu-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu-items {
+  position: absolute;
+  top: 12%;          /* ← 閉じるボタンの下あたり */
+  right: 2%;         /* ← 閉じるボタンと揃える */
+  display: flex;
+  flex-direction: column; /* ← 縦並び */
+  gap: 20px;         /* ← ボタン間隔 */
+
+  z-index: 3000;
+}
+
+.menu-items img {
+  width: 120px;      /* 好きなサイズに */
+  height: auto;
+}
+/* 開いた時のボタン（最前面） */
+.menu-btn--open {
+  z-index: 3000;
+}
+.menu-icon.is-disabled {
+  pointer-events: none;
+}
+.menu-trigger.is-disabled {
+  pointer-events: none;
 }
 
 /* PC / スマホ切替 */
 .pc { display: block; }
 .se { display: none; }
 
+
 /* ===== メディアクエリ：スマホ ===== */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
 
   /* 背景画像切替 */
   .bg {
     background-image: url("img/bg-se.jpg");
-    background-size: cover;       /* 横幅基準で画面いっぱいに */
+    background-size: auto 100%; /* ← 縦幅基準 */
     background-position: center;
     background-repeat: no-repeat;
   }
 
-  /* タイトル */
-  .title-fixed {
-    position: static;
-    padding: 40px 0;
-  }
+.menu-btn {
+  top: 2%;
+  right: 2%;
+  width: 13%;        /* サイズは調整してOK */
+  height: auto;
+}
+.menu-icon img {
+  width: 15%; /* 好きに調整 */
+  height: auto;
+  margin-right : -2%;
+  margin-top : -4%;
+}
 
   .title-img {
-    position: static;
-    top: 30px;
-    left: 0;
-    padding-top: 20px;
-    height: 40vh;
-    width: auto;
-    object-fit: contain;
-    transform: translate(20px, -40px);
-    z-index: 50;
+    animation-delay: 2.5s; 
+    top: 1%;
+    left: 0%;
+    width: 21%;
   }
 
-  .concept-pc {
-    padding-top: 35%;
-    margin-bottom: -2%;
+  .section-img {
+    margin: 40% 0;
   }
 
   /* キャッチコピー */
   .catchcopy {
-    right: 16px;
-    bottom: 35px;
-    width: 23px;
+    animation: fadeIn 2s ease-out forwards;
+    animation-delay: 1s; 
+    right: 5%;
+    bottom: 3%;
+    width: 4.5%;
   }
 
-  /* PDFボタン */
+  /* ボタン */
+  
+  .mapLink-btn {
+    top:28.7%;
+    left: 68.5%;
+    width: 16%;
+  }
+
   .pdf-btn {
-    top: 91.9%;
-    right: 87.8%;
-    width: 17%;
+    top: 91.7%;
+    left:-3.4%;
+    width: 20.5%;
   }
 
   .vcdLink-btn {
-    top: 76.5%;
-    right: 30.6%;
-    height: 4%;
+    top: 57.5%;
+    left:-17%;
+    height: 9.3%;
   }
 
   .mauLink-btn {
-    top: 81%;
-    right: 33.8%;
-    height: 4%;
+    top: 70%;
+    left:-13%;
+    height: 9.3%;
   }
 
-  .mau-img {
-    width: 10%;
-    left: 85%;
-    padding-top: 10%;
-    padding-bottom: 5%;
+  .linkImage{
+    margin-bottom:130% ;
   }
+
 
   .pc { display: none; }
   .se { display: block; }
