@@ -163,6 +163,47 @@ html {
   width: 100%;
 }
 
+/* leaflet本体 */
+.leaflet-base {
+  width: 100%;
+  display: block;
+}
+.book-wrapper {
+  position: relative;
+  width: 100%;
+}
+/* leaflet本体 */
+.book-base {
+  width: 100%;
+  display: block;
+}
+
+/* 写真を載せる枠 */
+.photo-frame {
+  position: absolute;
+  top: 17%;     /* ← leafletに合わせて後で調整 */
+  left: 19%;
+  width: 62%;
+  height: 60%;
+  overflow: hidden;
+}
+
+/* 写真共通 */
+.photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+/* 表示中 */
+.photo.is-active {
+  opacity: 1;
+}
 /* PDF ボタン（leaflet上） */
 .pdf-btn {
   position: absolute;
@@ -444,7 +485,7 @@ html {
   }
 
   .pdf-btn {
-    top: 91.7%;
+    top: 88.7%;
     left:-3.4%;
     width: 20.5%;
   }
@@ -465,6 +506,35 @@ html {
     margin-bottom:130% ;
   }
 
+  /* 写真を載せる枠 */
+.photo-frame {
+  position: absolute;
+  top: 4%;     /* ← leafletに合わせて後で調整 */
+  left: 6.5%;
+  width: 85%;
+height:80%;
+
+  overflow: hidden;
+   display: flex;              /* ← 追加 */
+  align-items: center;        /* 縦中央 */
+  justify-content: center;    /* 横中央 */
+  
+}
+
+/* 写真共通 */
+.photo {
+   position: absolute;   /* ← 戻す */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
 
   .pc { display: none; }
   .se { display: block; }

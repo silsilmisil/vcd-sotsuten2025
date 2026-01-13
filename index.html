@@ -100,7 +100,25 @@
 
 <!-- leaflet（PC版 / SP版） -->
 <div class="leaflet-wrapper" id="leaflet" >
-    <img src="img/leaflet-pc.png" class="section-img pc"alt="">
+    <!-- leaflet 下地 -->
+  <img src="img/leaflet-pc.png" class="leaflet-base section-img pc">
+
+  <!-- 写真レイヤー -->
+  <div class="photo-frame pc">
+    <img src="img/leaflet-photo-pc-1.jpg" class="photo is-active">
+    <img src="img/leaflet-photo-pc-2.png"  class="photo">
+    <img src="img/leaflet-photo-pc-3.jpg" class="photo">
+    <img src="img/leaflet-photo-pc-4.jpg" class="photo">
+    <img src="img/leaflet-photo-pc-5.jpg" class="photo">
+  </div>
+
+    <div class="photo-frame se">
+    <img src="img/leaflet-photo-se-1.jpg" class="photo is-active">
+        <img src="img/leaflet-photo-se-4.jpg" class="photo">
+    <img src="img/leaflet-photo-se-2.jpg"  class="photo">
+    <img src="img/leaflet-photo-se-3.jpg" class="photo">
+  </div>
+
     <img src="img/leaflet-se.png" class="section-img se"alt="">
 
     <!-- PDFリンクのボタン画像 -->
@@ -109,8 +127,29 @@
     </a>
 </div>
 
-<div class="leaflet-wrapper"  id="book" >
-    <img src="img/book-pc.png" class="section-img pc"alt="">
+<div class="book-wrapper"  id="book" >
+    <img src="img/book-pc.png" class="book-base section-img pc"alt="">
+
+    <div class="photo-frame pc">
+    <img src="img/book-photo-pc-1.jpg" class="photo is-active">
+    <img src="img/book-photo-pc-2.jpg"  class="photo">
+    <img src="img/book-photo-pc-3.jpg" class="photo">
+    <img src="img/book-photo-pc-4.png" class="photo">
+    <img src="img/book-photo-pc-5.png" class="photo">
+    <img src="img/book-photo-pc-6.png" class="photo">
+  </div>
+
+    <div class="photo-frame se">
+    <img src="img/book-photo-se-1.jpg" class="photo is-active">
+    <img src="img/book-photo-se-2.jpg"  class="photo">
+    <img src="img/book-photo-se-3.jpg" class="photo">
+    <img src="img/book-photo-se-4.jpg" class="photo">
+    <img src="img/book-photo-se-5.jpg" class="photo">
+    <img src="img/book-photo-se-6.png" class="photo">
+        <img src="img/book-photo-se-7.png" class="photo">
+  </div>
+  
+
     <img src="img/book-se.png" class="section-img se" alt="">
     </div>
 
@@ -203,6 +242,21 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   observer.observe(dummy);
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.photo-frame').forEach(frame => {
+    const photos = frame.querySelectorAll('.photo');
+    let current = 0;
+    const interval = 4000; // 4秒（必要なら 700 に戻してOK）
+
+    setInterval(() => {
+      photos[current].classList.remove('is-active');
+      current = (current + 1) % photos.length;
+      photos[current].classList.add('is-active');
+    }, interval);
+  });
 });
 </script>
 </body>
